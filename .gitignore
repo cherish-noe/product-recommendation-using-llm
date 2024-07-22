@@ -163,3 +163,7 @@ cython_debug/
 
 # Virtual environment
 llm-rec/
+
+# data
+data/
+
