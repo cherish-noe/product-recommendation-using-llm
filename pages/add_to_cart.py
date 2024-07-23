@@ -30,7 +30,7 @@ st.session_state['add_to_cart_products'] = edited_names
 
 view_cart_submit = st.button("View Cart")
 if view_cart_submit:
-    st.switch_page("app.py")
+    st.switch_page("pages/product_catalog.py")
 
 
 
