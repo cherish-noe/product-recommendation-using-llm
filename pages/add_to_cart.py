@@ -10,7 +10,11 @@ df['add_to_cart'] = False
 
 def update_cart():
     updated_data = st.session_state.add_to_cart
-    st.write(updated_data)
+    print(updated_data)
+    # edited_rows = updated_data['edited_rows']
+    # edited_keys = list(edited_rows.keys())
+    # print(edited_keys)
+    
 
 edited_df = st.data_editor(
     df, 
@@ -18,6 +22,20 @@ edited_df = st.data_editor(
     key="add_to_cart",
     on_change=update_cart
 )
+edited_rows = edited_df[edited_df['add_to_cart']==True]
+edited_names = edited_rows['product_name'].tolist()
+print(edited_names)
+
+st.session_state['add_to_cart_products'] = edited_names
+
+view_cart_submit = st.button("View Cart")
+if view_cart_submit:
+    st.switch_page("app.py")
+
+
+
+
+
 
 
 

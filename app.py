@@ -14,7 +14,6 @@ chroma_client = chromadb.PersistentClient(path="data/chroma_storage")
 collection = chroma_client.get_collection(name="product_embeddings")
 
 
-
 st.title("Similar Products") # Rename the title
 search_form = st.form("search_form")
 product_name = search_form.text_input('Search product:', 'Milk tea')
