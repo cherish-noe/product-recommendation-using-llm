@@ -75,25 +75,28 @@ def get_cart_recommendations(add_to_cart_products, llm_client, chroma_client, to
     print(len(product_list))
     print(product_list)
     print(type(product_list))
-    n_result = round(top_n/len(product_list))
-    print(n_result)
-    for product in product_list:
-        # Get embedding for the input product
-        response = llm_client.embeddings.create(input=product, model='text-embedding-3-small')
-        input_embedding = response.data[0].embedding
-
-        # Query ChromaDB for similar embeddings
-        collection = chroma_client.get_collection(name="product_embeddings")
-        results = collection.query(query_embeddings=input_embedding, n_results=n_result)
-
+    if len(product_list) > 0:
+        n_result = round(top_n/len(product_list))
+        print(n_result)
         recommendations = []
-        metadatas = results['metadatas']
+        for product in product_list:
+            # Get embedding for the input product
+            response = llm_client.embeddings.create(input=product, model='text-embedding-3-small')
+            input_embedding = response.data[0].embedding
 
-        product_names = [item['product_name'] for sublist in metadatas for item in sublist]
+            # Query ChromaDB for similar embeddings
+            collection = chroma_client.get_collection(name="product_embeddings")
+            results = collection.query(query_embeddings=input_embedding, n_results=n_result)
 
-        for product_name in product_names:
-            recommendations.append([product_name])
+            metadatas = results['metadatas']
 
-    return recommendations
+            product_names = [item['product_name'] for sublist in metadatas for item in sublist]
+
+            for product_name in product_names:
+                recommendations.append([product_name])
+
+        return recommendations
+    else:
+        return None
 
 

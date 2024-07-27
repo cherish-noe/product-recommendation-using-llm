@@ -1,5 +1,13 @@
 import streamlit as st
 import pandas as pd
+from app.utils.ui_components import sidebar_menu
+
+# Set Page Title
+st.set_page_config(
+    page_title="Add To Cart"
+)
+# Sidebar Menu
+sidebar_menu()
 
 def update_cart():
     updated_data = st.session_state.add_to_cart
@@ -9,7 +17,7 @@ def update_cart():
     # print(edited_keys)
 
 def main():
-
+    st.header("Add to Cart")
     cols = ['product_name', 'aisle', 'department']
     file_path = "data/raw/sample_product_metadata.csv"
     df = pd.read_csv(file_path, usecols=cols)
@@ -35,7 +43,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+ 
 
 
 

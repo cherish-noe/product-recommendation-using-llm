@@ -6,12 +6,15 @@ from app.recommender.llm_recommender import get_cart_recommendations
 init_resources()
 
 def main():
-    result = get_cart_recommendations(
-        st.session_state.add_to_cart_products,
-        st.session_state.llm,
-        st.session_state.chroma_client,
-        5)
-    st.write(result)
+    if 'add_to_cart_products' not in st.session_state:
+        st.write("No products")
+    else:
+        result = get_cart_recommendations(
+            st.session_state.add_to_cart_products,
+            st.session_state.llm,
+            st.session_state.chroma_client,
+            5)
+        st.write(result)
 
 if __name__ == "__main__":
     main()
