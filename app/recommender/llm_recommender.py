@@ -93,7 +93,7 @@ def get_cart_recommendations(add_to_cart_products, llm_client, chroma_client, to
             product_names = [item['product_name'] for sublist in metadatas for item in sublist]
 
             for product_name in product_names:
-                recommendations.append([product_name])
+                recommendations.append(product_name)
 
         return recommendations
     else:

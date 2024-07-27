@@ -16,10 +16,8 @@ load_css()
 
 def main():
 
-    st.header("Home", divider="grey")
-    # We'll recommend you what to buy next, ensuring you find the best products tailored
-    # to your preferences.
-
+    st.header("Similar Products", divider="grey")
+    
     search_form = st.form("search_form")
     product_name = search_form.text_input('Search product:', 'Milk tea')
     search_submit = search_form.form_submit_button(label="Submit")
