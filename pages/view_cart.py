@@ -23,7 +23,7 @@ def main():
     st.markdown("""
     <h1 style='text-align: left; color: #f8f4f1;'>Cart Recommendations</h1>
     <div style='text-align: left; color: #7f7f7f; font-size: 17px;'>
-    To get recommedations about what to buy next, add items to your cart.
+    Here are the recommended products to buy next based on your cart items.
     </div>
     <hr>
     """, unsafe_allow_html=True)

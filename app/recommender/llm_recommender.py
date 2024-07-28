@@ -25,7 +25,7 @@ def get_similar_products(product_name, llm_client, chroma_client, top_n=5):
     product_names = [item['product_name'] for sublist in metadatas for item in sublist]
 
     for product_name in product_names:
-        recommendations.append({'product_name': product_name})
+        recommendations.append(product_name)
 
     return recommendations
 
