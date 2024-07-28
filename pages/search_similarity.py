@@ -22,9 +22,8 @@ def main():
     <div style='text-align: left; color: #7f7f7f; font-size: 17px;'>
     To get recommedations about what to buy next, add items to your cart.
     </div>
+                <hr>
     """, unsafe_allow_html=True)
-    st.text("")
-    st.text("")
 
     st.subheader("Search Product:")
     search_form = st.form("search_form")

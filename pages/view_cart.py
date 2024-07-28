@@ -27,7 +27,7 @@ def main():
     </div>
     <hr>
     """, unsafe_allow_html=True)
-    # st.divider()
+
     if 'add_to_cart_products' not in st.session_state:
         display_text()
         

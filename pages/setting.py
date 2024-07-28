@@ -17,12 +17,12 @@ load_css()
 
 
 def main():
-    st.subheader("API Configuration")
+    # st.header("API Configuration")
     st.markdown("""
+    <h1 style='text-align: left; color: #f8f4f1;'>API Configuration</h1>
     <div class='header_desc'>
-    Pleae provide your OpenAI API key to continue using the app:
+    <p style= 'text-align: left;'>Pleae provide your OpenAI API key to continue using the app:</p>
     </div>
-    <br>
     """, unsafe_allow_html=True)
     with st.container(border=True):
         openai_api_key = st.text_input(label="OpenAI API key", key='api_key')

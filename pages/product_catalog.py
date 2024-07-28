@@ -13,13 +13,12 @@ load_css()
 
 def main():
     st.markdown("""
-    <h1 style='text-align: center; color: #f8f4f1;'>Product Catalog</h1>
-    <div style='text-align: center; color: #7f7f7f; font-size: 17px;'>
+    <h1 style='text-align: left; color: #f8f4f1;'>Product Catalog</h1>
+    <div style='text-align: left; color: #7f7f7f; font-size: 17px;'>
     To get recommedations about what to buy next, add items to your cart.
     </div>
+    <hr>
     """, unsafe_allow_html=True)
-    st.text("")
-    st.text("")
 
     cols_to_read = ['product_name', 'aisle', 'department']
     df = pd.read_csv("data/raw/product_metadata.csv", usecols=cols_to_read)

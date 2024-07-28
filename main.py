@@ -27,15 +27,28 @@ def main():
     with col1:
         st.subheader(":grey[About the Project]")
         st.markdown("""
-        This :blue-background[&nbsp;POC&nbsp;] project leverages **LLMs** to provide product recommendations.
+        This &nbsp; :blue-background[&nbsp;POC&nbsp;] &nbsp; project leverages **LLMs** to provide product recommendations.
         It analyzes the items added to your cart and suggests additional products you might be intersted in.
         """)
         st.markdown("""
         Plus, when you search for a product, it displays and recommends products similar to your search query.
         """)
+
         st.subheader(":grey[Technologies Used]")
         st.markdown("""
-        - **Vector Database**
+        :grey-background[&nbsp;**Vector Database**&nbsp;]
+        """)
+        st.markdown("""
+        :grey-background[&nbsp;**RAG**&nbsp;]
+        """)
+        st.markdown("""
+        :grey-background[&nbsp;**Embedding Model**&nbsp;]
+        """)
+        st.markdown("""
+        :grey-background[&nbsp;**GPT-4o mini**&nbsp;]
+        """)
+        st.markdown("""
+        :grey-background[&nbsp;**LangChain**&nbsp;]
         """)
     with col2:
         st.write("")
@@ -54,6 +67,19 @@ def main():
         3. **Cart Recommendations**:  
         This page lists all the items you've added to your cart and provides recommendations on what you should consider buying next.
         """)
+        st.markdown("""
+        4. **Product Catalog**:  
+        The page allows you to browse through our diverse range of products.
+        """)
+        st.markdown("""
+        4. **Similar Products**:  
+        On this page, search the product you're looking for and discover similar products related to your search.
+        """)
+        st.markdown("""
+        4. **API Configuration**:  
+        You'll find fields to enter your API key. These keys are necessary to authenticate and use the recommendation system effectively.
+        """)
+        
     
 
 
