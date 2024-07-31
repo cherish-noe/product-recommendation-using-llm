@@ -1,3 +1,6 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 from app.utils.resources import init_resources
 from app.utils.ui_components import sidebar_menu, load_css
