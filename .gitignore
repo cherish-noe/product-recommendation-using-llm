@@ -165,5 +165,5 @@ cython_debug/
 llm-rec/
 
 # data
-app/data/
+# app/data/
 
