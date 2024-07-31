@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 
 def sidebar_menu():
-    st.sidebar.image("file-1.png")
+    st.sidebar.image("img/file-1.png")
     st.sidebar.subheader("Product Recommendation using LLM", divider="grey")
     # st.sidebar.text("")
     st.sidebar.page_link("main.py", label=":blue[🏠] &nbsp; **Home Page**")

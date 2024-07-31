@@ -28,7 +28,7 @@ def main():
     """, unsafe_allow_html=True)
 
     cols = ['product_name', 'aisle', 'department']
-    file_path = "data/raw/sample_product_metadata.csv"
+    file_path = "app/data/raw/sample_product_metadata.csv"
     df = pd.read_csv(file_path, usecols=cols)
 
     # Add 'add_to_cart' col

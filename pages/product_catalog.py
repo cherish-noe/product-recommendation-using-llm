@@ -21,7 +21,7 @@ def main():
     """, unsafe_allow_html=True)
 
     cols_to_read = ['product_name', 'aisle', 'department']
-    df = pd.read_csv("data/raw/product_metadata.csv", usecols=cols_to_read)
+    df = pd.read_csv("app/data/raw/product_metadata.csv", usecols=cols_to_read)
     df_10 = df.head(20)
 
     st.dataframe(

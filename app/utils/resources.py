@@ -13,5 +13,5 @@ def init_resources():
         st.session_state['llm'] = llm
 
     if "chorma_client" not in st.session_state:
-        chroma_client = chromadb.PersistentClient(path="data/chroma_storage")
+        chroma_client = chromadb.PersistentClient(path="app/data/chroma_storage")
         st.session_state['chroma_client'] = chroma_client
