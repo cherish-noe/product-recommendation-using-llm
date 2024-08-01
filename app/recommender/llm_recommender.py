@@ -25,15 +25,17 @@ def get_similar_products(product_name, llm_client, chroma_client, top_n=5):
 
     product_names = [item['product_name'] for sublist in metadatas for item in sublist]
 
-    for product_name in product_names:
-        recommendations.append(product_name)
+    for name in product_names:
+        if name != product_name:
+            recommendations.append(name)
 
     return recommendations
 
 def get_user_prompt(add_to_cart_products, top_n):
     products = ', '.join(add_to_cart_products)
-    prompt = f"A user added the following products: {add_to_cart_products} to her shopping cart. \
-        What next {top_n} items would she be likely to purchase next?"
+    prompt = f"User added the following products: {add_to_cart_products} to her shopping cart. \
+        Guess what she's trying to do with these product and generate \
+        what next {top_n} items would she be likely to purchase next?"
     # prompt += "Express your response as a python list."
     prompt += " Express your response as a JSON object with a key of 'next_items' and \
         a value representing your array of recommended items."
@@ -51,6 +53,7 @@ def get_general_recommendations(add_to_cart_products, llm_client, chroma_client,
         list: List of recommended items.
     """
     system_prompt = "You are an AI assistant functioning as a recommendation system for an ecommerce website. \
+        Your job is also to increase cross-selling. \
         Be specific and limit your answers to the requested format. Keep your answers short and concise."
 
     user_prompt = get_user_prompt(add_to_cart_products, top_n)

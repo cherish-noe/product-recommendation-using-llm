@@ -16,7 +16,7 @@ def main():
     st.markdown("""
     <h1 style='text-align: left; color: #f8f4f1;'>Product Catalog</h1>
     <div style='text-align: left; color: #7f7f7f; font-size: 17px;'>
-    To get recommedations about what to buy next, add items to your cart.
+    Here is the list of the products available in the store.
     </div>
     <hr>
     """, unsafe_allow_html=True)

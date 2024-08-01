@@ -20,7 +20,7 @@ def main():
     st.markdown("""
     <h1 style='text-align: left; color: #f8f4f1;'>Similar Products</h1>
     <div style='text-align: left; color: #7f7f7f; font-size: 17px;'>
-    To get recommedations about what to buy next, add items to your cart.
+    Search a product and get the products that are similar to your search.
     </div>
                 <hr>
     """, unsafe_allow_html=True)
@@ -34,7 +34,7 @@ def main():
         st.subheader("Products like this:")
         with st.spinner('Wait for it...'):
             time.sleep(5)
-            results = get_similar_products(product_name, st.session_state.llm, st.session_state.chroma_client, 5)
+            results = get_similar_products(product_name, st.session_state.llm, st.session_state.chroma_client, 6)
             st.write(results)
 
 if __name__ == "__main__":
