@@ -75,11 +75,11 @@ def main():
         The page allows you to browse through our diverse range of products.
         """)
         st.markdown("""
-        4. **Similar Products**:  
+        5. **Similar Products**:  
         On this page, search the product you're looking for and discover similar products related to your search.
         """)
         st.markdown("""
-        4. **API Configuration**:  
+        6. **API Configuration**:  
         You'll find fields to enter your API key. These keys are necessary to authenticate and use the recommendation system effectively.
         """)
         
