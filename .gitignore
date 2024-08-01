@@ -165,6 +165,6 @@ cython_debug/
 llm-rec/
 
 # data
-app/data/chroma_storage/*
+app/data/chroma_storage
 app/data/chroma_zip
 

@@ -33,6 +33,7 @@ def main():
         if submit:
             with open('.env', 'w') as file:
                 file.write(f"OPENAI_API_KEY={openai_api_key}\n")
+            st.success('Success!', icon='✅')
     else:
         submit = st.button('&nbsp;&nbsp;Submit&nbsp;&nbsp;', key='set-api-key', disabled=True)
 

@@ -4,7 +4,7 @@ import streamlit as st
 from openai import OpenAI
 import chromadb
 
-
+@st.cache_resource
 def init_resources():
     load_dotenv()
 

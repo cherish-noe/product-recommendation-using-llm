@@ -1,4 +1,5 @@
 import json
+import streamlit as st
 
 def get_similar_products(product_name, llm_client, chroma_client, top_n=5):
     """
@@ -65,7 +66,6 @@ def get_general_recommendations(add_to_cart_products, llm_client, chroma_client,
     )
 
     return response.choices[0].message.content
-
 
 def get_cart_recommendations(add_to_cart_products, llm_client, chroma_client, top_n=10):
 

@@ -28,9 +28,15 @@ def main():
     <hr>
     """, unsafe_allow_html=True)
 
-    cols = ['product_name', 'aisle', 'department']
-    file_path = "app/data/processed/product_metadata.csv"
-    df = pd.read_csv(file_path, usecols=cols)
+    @st.cache_data
+    def read_data():
+        cols = ['product_name', 'aisle', 'department']
+        file_path = "app/data/processed/product_metadata.csv"
+        df = pd.read_csv(file_path, usecols=cols)
+        df = df.iloc[:5000]
+        return df
+
+    df = read_data()
 
     # Add 'add_to_cart' col
     df['add_to_cart'] = False
