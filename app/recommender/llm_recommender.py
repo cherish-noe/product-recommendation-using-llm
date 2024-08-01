@@ -1,7 +1,8 @@
 import json
 import streamlit as st
 
-def get_similar_products(product_name, llm_client, chroma_client, top_n=5):
+@st.cache_resource
+def get_similar_products(product_name, _llm_client, _chroma_client, top_n=5):
     """
     Recommend similar products based on item name and descriptions.
 
@@ -12,11 +13,11 @@ def get_similar_products(product_name, llm_client, chroma_client, top_n=5):
         list: List of similar recommended products.
     """
     # Get embedding for the input product
-    response = llm_client.embeddings.create(input=product_name, model='text-embedding-3-small')
+    response = _llm_client.embeddings.create(input=product_name, model='text-embedding-3-small')
     input_embedding = response.data[0].embedding
 
     # Query ChromaDB for similar embeddings
-    collection = chroma_client.get_collection(name="product_embeddings")
+    collection = _chroma_client.get_collection(name="product_embeddings")
     results = collection.query(query_embeddings=input_embedding, n_results=top_n)
 
     # Extract and return recommeded products
@@ -42,7 +43,8 @@ def get_user_prompt(add_to_cart_products, top_n):
     
     return prompt
 
-def get_general_recommendations(add_to_cart_products, llm_client, chroma_client, top_n=5):
+@st.cache_resource
+def get_general_recommendations(add_to_cart_products, _llm_client, _chroma_client, top_n=5):
     """
     Recommend items based on the items added to the cart.
 
@@ -58,7 +60,7 @@ def get_general_recommendations(add_to_cart_products, llm_client, chroma_client,
 
     user_prompt = get_user_prompt(add_to_cart_products, top_n)
 
-    response = llm_client.chat.completions.create(
+    response = _llm_client.chat.completions.create(
         model='gpt-4o-mini',
         response_format={ "type": "json_object" },
         messages=[
@@ -70,9 +72,10 @@ def get_general_recommendations(add_to_cart_products, llm_client, chroma_client,
 
     return response.choices[0].message.content
 
-def get_cart_recommendations(add_to_cart_products, llm_client, chroma_client, top_n=10):
+@st.cache_resource
+def get_cart_recommendations(add_to_cart_products, _llm_client, _chroma_client, top_n=10):
 
-    general_products = get_general_recommendations(add_to_cart_products, llm_client, chroma_client, top_n=5)
+    general_products = get_general_recommendations(add_to_cart_products, _llm_client, _chroma_client, top_n=5)
     product_dict = json.loads(general_products)
     product_list = product_dict["next_items"]
     print(len(product_list))
@@ -84,11 +87,11 @@ def get_cart_recommendations(add_to_cart_products, llm_client, chroma_client, to
         recommendations = []
         for product in product_list:
             # Get embedding for the input product
-            response = llm_client.embeddings.create(input=product, model='text-embedding-3-small')
+            response = _llm_client.embeddings.create(input=product, model='text-embedding-3-small')
             input_embedding = response.data[0].embedding
 
             # Query ChromaDB for similar embeddings
-            collection = chroma_client.get_collection(name="product_embeddings")
+            collection = _chroma_client.get_collection(name="product_embeddings")
             results = collection.query(query_embeddings=input_embedding, n_results=n_result)
 
             metadatas = results['metadatas']
