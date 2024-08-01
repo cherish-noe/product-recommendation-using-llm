@@ -4,7 +4,8 @@ from app.utils.ui_components import sidebar_menu, load_css, custom_button
 
 # Set Page Title
 st.set_page_config(
-    page_title="Add To Cart"
+    page_title="Add To Cart",
+    layout="wide"
 )
 # Sidebar Menu
 sidebar_menu()
@@ -28,7 +29,7 @@ def main():
     """, unsafe_allow_html=True)
 
     cols = ['product_name', 'aisle', 'department']
-    file_path = "app/data/raw/sample_product_metadata.csv"
+    file_path = "app/data/processed/product_metadata.csv"
     df = pd.read_csv(file_path, usecols=cols)
 
     # Add 'add_to_cart' col

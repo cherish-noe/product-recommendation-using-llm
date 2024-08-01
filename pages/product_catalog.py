@@ -4,7 +4,8 @@ from app.utils.ui_components import sidebar_menu, load_css
 
 # Set Page Title
 st.set_page_config(
-    page_title="Product Catalog"
+    page_title="Product Catalog",
+    layout="wide"
 )
 # Sidebar Menu
 sidebar_menu()
@@ -21,18 +22,19 @@ def main():
     """, unsafe_allow_html=True)
 
     cols_to_read = ['product_name', 'aisle', 'department']
-    df = pd.read_csv("app/data/raw/product_metadata.csv", usecols=cols_to_read)
-    df_10 = df.head(20)
-
-    st.dataframe(
-        df_10,
-        column_config={
-            "product_name": "Product Name",
-            "aisle": "Aisle",
-            "department": "Department"
-        },
-        hide_index=True
-    )
+    df = pd.read_csv("app/data/processed/product_metadata.csv", usecols=cols_to_read)
+    
+    with st.container():
+        st.dataframe(
+            df,
+            use_container_width=True,
+            column_config={
+                "product_name": "Product Name",
+                "aisle": "Aisle",
+                "department": "Department"
+            },
+            hide_index=True
+        )
 
 if __name__ == "__main__":
     main()

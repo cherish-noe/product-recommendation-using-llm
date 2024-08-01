@@ -4,4 +4,4 @@ streamlit
 streamlit-extras
 tqdm
 python-dotenv
-pysqlite3-binary
+# pysqlite3-binary
